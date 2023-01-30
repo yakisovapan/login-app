@@ -34,7 +34,7 @@
       :disabled ='cheaker'
       v-on:click="logincheak()"
     >
-      Disabled
+      Login
     </v-btn>
     </v-container>
   </v-form>
