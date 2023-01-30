@@ -49,7 +49,7 @@
       password: '',
       passwordReg:/^[0-9a-zA-Z]+$/,
       passwordRules: [
-        v => this.passwordReg.test(v) || '英数字にしてください',
+        v => /^[0-9a-zA-Z]+$/.test(v) || '英数字にしてください',
         v => v.length >= 12 || 'パスワードは12文字以上にしてください',
         v => v.length <= 15 || 'パスワードは15文字以下にしてください',
       ],
@@ -57,11 +57,11 @@
       emailReg:/.+@shizuoka.ac.jp+/,
       emailRules: [
         v => !!v || 'メールアドレスを記入してください',
-        v => this.emailReg.test(v) || 'メールアドレスは@shizuoka.ac.jpである必要があります',
+        v => /.+@shizuoka.ac.jp+/.test(v) || 'メールアドレスは@shizuoka.ac.jpである必要があります',
       ],
       userdata:{
         email:"aaa.aaa@shizuoka.ac.jp",
-        password:"aaaaaaaaaaaaa"
+        password:"0123456789ab"
       }
     }),
     methods:{
@@ -80,7 +80,6 @@
         }else{
           this.cheaker = true;
         }
-        console.log(this.cheaker);
       },
       password:function(){
         if(this.emailReg.test(this.email) && this.passwordReg.test(this.password) && this.password.length >= 12 && this.password.length <= 15){
@@ -88,7 +87,6 @@
         }else{
           this.cheaker = true;
         }
-        console.log(this.cheaker);
       }
     }
   }
